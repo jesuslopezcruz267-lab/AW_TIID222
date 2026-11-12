@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Calificaciones</title>
+</head>
+<body>
+    <div>
+        <h1>GESTIÓN DE CALIFICACIONES</h1>
+
+        {% with mesajes = get_flashed_messages() %}
+            {% if mesajes %}
+                {% for msj in mesajes %}
+                    <h3>{{ msj }}</h3>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <!-- FORMULARIO -->
+        <form action="/guardar" method="POST">
+            <input type="text" name="txtAlumno" placeholder="Nombre del alumno" required>
+            <input type="text" name="txtMatricula" placeholder="Matrícula" required>
+            <input type="text" name="txtMateria" placeholder="Nombre de la materia" required>
+            <input type="number" name="txtCalificacion" placeholder="Calificación" min="0" max="10" step="0.1" required>
+            <button type="submit">Guardar</button>
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <td>Id:</td>
+                    <td>Alumno:</td>
+                    <td>Matrícula:</td>
+                    <td>Materia:</td>
+                    <td>Calificación:</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cal in listCalificaciones %}
+                <tr>
+                    <td>{{ cal.0 }}</td>
+                    <td>{{ cal.1 }}</td>
+                    <td>{{ cal.2 }}</td>
+                    <td>{{ cal.3 }}</td>
+                    <td>{{ cal.4 }}</td>
+                    <td>
+                        <a href="/editar/{{ cal.0 }}">Editar</a>
+                        <a href="/eliminar/{{ cal.0 }}">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

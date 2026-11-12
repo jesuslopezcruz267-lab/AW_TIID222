@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Calificación</title>
+</head>
+<body>
+    <div>
+        <h1>Calificación a editar</h1>
+        <form action="/actualizar/{{ Calif.0 }}" method="POST">
+            <input type="text" name="txtAlumno" value="{{ Calif.1 }}">
+            <input type="text" name="txtMatricula" value="{{ Calif.2 }}">
+            <input type="text" name="txtMateria" value="{{ Calif.3 }}">
+            <input type="number" name="txtCalificacion" value="{{ Calif.4 }}" min="0" max="10" step="0.1">
+            <button type="submit">Actualizar</button>
+        </form>
+    </div>
+</body>
+</html>
